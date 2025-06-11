@@ -144,7 +144,7 @@ if __name__ == '__main__':
 
     # Sample and save trace
     with sdt_model:
-        trace = pm.sample(draws=3000, tune=2000, target_accept=0.99, cores=4, return_inferencedata=True)
+        trace = pm.sample(draws=2000, tune=1000, target_accept=0.99, cores=4, return_inferencedata=True)
         az.to_netcdf(trace, 'sdt_trace.nc')
 
     # Population-level summary
