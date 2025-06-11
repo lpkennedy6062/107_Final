@@ -2,6 +2,7 @@
 Liam Kennedy
 
 I did utilize AI when learning how to implement graphing data.
+
 Using the code in `sdt_ddm.py1`, analyze the data in the file `data.csv`.
 
 The code contains a function to read the data, a function to create a hierarchical SDT model, and a function to draw delta plots.  You will need to add code to run the analysis, and you may need to edit these functions to suit your purposes.
