@@ -1,4 +1,4 @@
-from sdtretest import read_data, apply_hierarchical_sdt_model, draw_delta_plots, plot_sdt_posteriors
+from sdt_retest import read_data, apply_hierarchical_sdt_model, draw_delta_plots, plot_sdt_posteriors
 import pymc as pm
 import arviz as az
 
