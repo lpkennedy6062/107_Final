@@ -125,6 +125,9 @@ def draw_delta_plots(data, pnum):
     fig, axes = plt.subplots(len(conds), len(conds), figsize=(4*len(conds),4*len(conds)))
     for i, c1 in enumerate(conds):
         for j, c2 in enumerate(conds):
+            if i == j:
+                axes[i, j].axis('off')
+                continue
             for mode, color in [('overall','black'), ('error','red'), ('accurate','green')]:
                 s1 = data[(data['pnum']==pnum)&(data['condition']==c1)&(data['mode']==mode)]
                 s2 = data[(data['pnum']==pnum)&(data['condition']==c2)&(data['mode']==mode)]
@@ -136,8 +139,19 @@ def draw_delta_plots(data, pnum):
     plt.tight_layout()
     plt.show()
 
+def plot_sdt_posteriors(trace):
+    import matplotlib.pyplot as plt
+    import arviz as az
 
-if __name__ == '__main__':
+    az.plot_posterior(
+        trace,
+        var_names=['beta_stim','beta_diff','gamma_stim','gamma_diff'],
+        hdi_prob=0.94
+    )
+    plt.tight_layout()
+    plt.show()
+
+'''if __name__ == '__main__':
     # SDT analysis
     sdt_df    = read_data('data.csv', prepare_for='sdt', display=True)
     sdt_model = apply_hierarchical_sdt_model(sdt_df)
@@ -165,4 +179,4 @@ if __name__ == '__main__':
 
     # Delta plot for participant 1
     dp_df = read_data('data.csv', prepare_for='delta plots', display=False)
-    draw_delta_plots(dp_df, pnum=1)
+    draw_delta_plots(dp_df, pnum=1)'''
